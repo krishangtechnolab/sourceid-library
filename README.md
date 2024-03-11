@@ -1,15 +1,14 @@
 # sourceId-library
 
 1. Install dependency on your project
-   $ npm install ktdevtest1
-
+   $ npm install sourceid-api-types-library
 2. Import library
 
 For node js
-const { sourceIdApi } = require("ktdevtest1");
+const { sourceIdApi } = require("sourceid-api-types-library");
 
 For react
-import { sourceIdApi } from "ktdevtest1";
+import { sourceIdApi } from "sourceid-api-types-library";
 
 3. Use api code
 
