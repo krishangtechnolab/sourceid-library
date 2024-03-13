@@ -18,12 +18,12 @@ export async function getAllUsers(
   }
 }
 
-export async function GetOnBoardingDataById(
+export async function getOnBoardingDataById(
   apiKey: string,
-  id: any
+  onboardingDataId: any
 ): Promise<any> {
   try {
-    const response = await axios.get(`/user/${id}`, {
+    const response = await axios.get(`/user/${onboardingDataId}`, {
       headers: {
         apiKey,
       },
@@ -34,13 +34,26 @@ export async function GetOnBoardingDataById(
   }
 }
 
-export async function updateUser(
+export async function deleteUser(apiKey: string, id: string): Promise<any> {
+  try {
+    const response = await axios.delete(`/user/${id}`, {
+      headers: {
+        apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+export async function updateOnboardingData(
   apiKey: string,
-  id: string,
+  onboardingDataId: string,
   data: any
 ): Promise<any> {
   try {
-    const response = await axios.patch(`/user/${id}`, data, {
+    const response = await axios.patch(`/user/${onboardingDataId}`, data, {
       headers: {
         apiKey,
       },
@@ -51,28 +64,31 @@ export async function updateUser(
   }
 }
 
-// export async function createUser(apiKey: string, userData: User): Promise<any> {
-//     try {
-//         const response = await axios.post('/user/', userData, {
-//             headers: {
-//                 apiKey,
-//             },
-//         });
-//         return response.data;
-//     } catch (error) {
-//         return Promise.reject(error);
-//     }
-// }
+export async function createUser(apiKey: string, data: any): Promise<any> {
+  try {
+    const response = await axios.post("/user/", data, {
+      headers: {
+        apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
 
-// export async function userDashboard(apiKey: string, OnboardingDataId: string): Promise<any> {
-//     try {
-//         const response = await axios.get(`/user/dashboard/${OnboardingDataId}`, {
-//             headers: {
-//                 apiKey,
-//             },
-//         });
-//         return response.data;
-//     } catch (error) {
-//         return Promise.reject(error);
-//     }
-// }
+export async function userDashboard(
+  apiKey: string,
+  onboardingDataId: string
+): Promise<any> {
+  try {
+    const response = await axios.get(`/user/dashboard/${onboardingDataId}`, {
+      headers: {
+        apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}

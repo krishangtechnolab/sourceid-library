@@ -1,5 +1,10 @@
 import axios from "../config/axiosConfig";
-import { RiskRangeProps, RiskScoreProps, AdminProps } from "../types/admin";
+import {
+  RiskRangeProps,
+  RiskScoreProps,
+  AdminProps,
+  MetricQueryParamsProps,
+} from "../types/admin";
 
 export async function getAdminUser(apiKey: string, id: string): Promise<any> {
   try {
@@ -14,7 +19,7 @@ export async function getAdminUser(apiKey: string, id: string): Promise<any> {
   }
 }
 
-export async function UpdateAdminUser(
+export async function updateAdminUser(
   apiKey: string,
   id: string,
   data: AdminProps
@@ -110,12 +115,29 @@ export async function placeKeyAPI(apiKey: string, data: any): Promise<any> {
   }
 }
 
-export async function PlaceKeyMatchAPI(
+export async function placeKeyMatchAPI(
   apiKey: string,
   data: any
 ): Promise<any> {
   try {
     const response = await axios.post(`/admin/placekey-match`, data, {
+      headers: {
+        apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+export async function getNetricData(
+  apiKey: string,
+  QueryParams: MetricQueryParamsProps
+): Promise<any> {
+  try {
+    const response = await axios.get(`/admin/metric`, {
+      params: QueryParams,
       headers: {
         apiKey,
       },

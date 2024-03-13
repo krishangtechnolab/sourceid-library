@@ -26,3 +26,8 @@ export interface AdminProps {
   country?: string;
   entityId?: string;
 }
+
+export interface MetricQueryParamsProps {
+  type: string;
+  notify: "no" | "yes";
+}

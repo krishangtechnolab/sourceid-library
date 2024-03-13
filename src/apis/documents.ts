@@ -17,9 +17,12 @@ export async function getAllDocuments(
   }
 }
 
-export async function getDocumentByUser(apiKey: string, id: any): Promise<any> {
+export async function getDocumentOfUserOnboarding(
+  apiKey: string,
+  onboardingDataId: any
+): Promise<any> {
   try {
-    const response = await axios.get(`/image/all/${id}`, {
+    const response = await axios.get(`/image/all/${onboardingDataId}`, {
       headers: {
         apiKey,
       },
@@ -45,6 +48,33 @@ export async function getDocumentByDocId(
     return Promise.reject(error);
   }
 }
+
+export async function createDocument(apiKey: string, data: any): Promise<any> {
+  try {
+    const response = await axios.post(`/image/`, data, {
+      headers: {
+        apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+export async function editDocument(apiKey: string, id: string): Promise<any> {
+  try {
+    const response = await axios.get(`/image/${id}`, {
+      headers: {
+        apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 export async function updateDocumentByDocId(
   apiKey: string,
   id: string,
@@ -52,6 +82,22 @@ export async function updateDocumentByDocId(
 ): Promise<any> {
   try {
     const response = await axios.patch(`/image/${id}`, data, {
+      headers: {
+        apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+export async function reUploadDocument(
+  apiKey: string,
+  data: any
+): Promise<any> {
+  try {
+    const response = await axios.post(`/reupload/`, data, {
       headers: {
         apiKey,
       },
