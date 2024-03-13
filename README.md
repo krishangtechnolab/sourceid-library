@@ -1,6 +1,6 @@
 # sourceId-library
 
-<font size="4">A concise and descriptive overview of the library's purpose and functionality.</font>
+A concise and descriptive overview of the library's purpose and functionality.
 
 ## Table of Contents
 
@@ -42,8 +42,8 @@ Example: Fetching admin user data:
 
 ```javascript
 const data = await sourceIdApi.getAdminUser(
-  "bcdffde2-9427-4e8f-a84b-beb62cfea9f1",
-  "65ca159425c0a322b29b8d7e"
+  "bcdffde2-7453-4e8f-j252-beb62cfea9j2",
+  "65d5h49425c0a322b29b8d7e"
 );
 ```
 
